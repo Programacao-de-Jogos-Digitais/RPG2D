@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     //Atributos
     private float initialSpeed; //velocidade inicial
     private bool _isRunning; //verifica se esta correndo
+    private bool _isRolling; //verifica se esta rolando
     private Vector2 _direction; //controle de direção do player
 
     //permite acessar essa função publica de outro script
@@ -28,6 +29,12 @@ public class Player : MonoBehaviour
         get { return _isRunning; }
         set { _isRunning = value; }
     }
+    
+    public bool isRolling //verifica se está correndo ou não
+    {
+        get { return _isRolling; }
+        set { _isRolling = value; }
+    }
 
     private void Start()
     {
@@ -39,14 +46,14 @@ public class Player : MonoBehaviour
     // é chamado a cada frame
     void Update()
     {
-        
+        OnInput(); //chama a função input direcional
         OnRun(); //chama método correr
+        OnRolling(); //chama a função rolar
     }
 
     private void FixedUpdate()
     {
-        OnInput(); //chama o input direcional
-        OnMove(); //chama o andar
+        OnMove(); //chama a função andar
     }
 
     #region Movement
@@ -76,6 +83,22 @@ public class Player : MonoBehaviour
             speed = initialSpeed; //volta a velocidade inicial
             _isRunning = false; //parou de correr
         }
+    }
+
+    void OnRolling()
+    {
+        if(Input.GetMouseButtonDown(1)) //verifica se esta precionando o botão direito do mouse
+        {
+            speed = runSpeed; //velocidade aumenta
+            _isRolling = true; //rolar
+        }
+        
+        if(Input.GetMouseButtonUp(1)) //verifica se soltou o botão direito do mouse
+        {
+            speed = initialSpeed; //volta a velocidade inicial
+            _isRolling = false; //para de rolar
+        }
+
     }
 
 

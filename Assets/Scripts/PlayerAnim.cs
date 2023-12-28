@@ -26,7 +26,15 @@ public class PlayerAnim : MonoBehaviour
     {
         if (player.direction.sqrMagnitude > 0) //se direção for maior que zero
         {
-            anim.SetInteger("transition", 1); //altera o valor do transition para 1
+            if(player.isRolling) //se for isRolling for verdadeiro
+            {
+                anim.SetTrigger("isRoll");//chama animação rolar
+            } 
+            
+            else //se isRolling for falso
+            {
+                anim.SetInteger("transition", 1);//Chama animação andar
+            }
         }
         else
         {
