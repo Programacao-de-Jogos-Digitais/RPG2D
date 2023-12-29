@@ -35,22 +35,25 @@ public class Languages //linguas que vai falar
 }
 
 //Só é chamado se estiver com o editor da unity aberto
+//Classe que cria um botão no Inspector
 #if UNITY_EDITOR
 [CustomEditor(typeof(DialogueSettings))] //referencia o script DialogueSettings
 public class BuilderEditor : Editor
 {
     public override void OnInspectorGUI() //sobrescreve uma classe
     {
-        DrawDefaultInspector(); //Redesenho meu Inspector
+        DrawDefaultInspector(); //Redesenho (cobrir) meu Inspector
 
         //criar um objeto para cada classe desse script
+        //declaração do dialogueSetting
         DialogueSettings dialogueSettings = (DialogueSettings)target; //alvo 
 
+        //declaração de languages
         Languages languages = new Languages(); //Armazena as falas
         languages.portuguese = dialogueSettings.sentence; //Por padrão iniciamos com portugues a fala
 
         Sentences sentences = new Sentences();
-        sentences.profile = dialogueSettings.speakerSprite; //foto do NPC
+        sentences.profile = dialogueSettings.speakerSprite; //pega a foto do NPC anterior
         sentences.sentence = languages; //Falas em todas as linguagens 
 
         //Cria o botão para adicionar falas

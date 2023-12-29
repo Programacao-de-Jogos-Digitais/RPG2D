@@ -12,7 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b032a58c9a14a4cab158aa1c70a80c, type: 3}
   m_Name: npc_1
   m_EditorClassIdentifier: 
-  actor: {fileID: 0}
+  actor: {fileID: 4984427771880002143, guid: 619a8679f2406c247844c16eb913fc1b, type: 3}
   speakerSprite: {fileID: 0}
   sentence: 
-  dialogues: []
+  dialogues:
+  - actorName: Maria
+    profile: {fileID: -1446484580, guid: 5b05062588ba4154fa3d46b92353a661, type: 3}
+    sentence:
+      portuguese: "Ol\xE1"
+      english: Hello
+      spanish: Hola
+  - actorName: "Jo\xE3o"
+    profile: {fileID: -1446484580, guid: 5b05062588ba4154fa3d46b92353a661, type: 3}
+    sentence:
+      portuguese: Como vai
+      english: how are you
+      spanish: como usteds estas
+  - actorName: Maria
+    profile: {fileID: -1446484580, guid: 5b05062588ba4154fa3d46b92353a661, type: 3}
+    sentence:
+      portuguese: Tudo bem
+      english: 
+      spanish: 
