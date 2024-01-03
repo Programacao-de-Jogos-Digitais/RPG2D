@@ -21,7 +21,16 @@ public class DialogueControl : MonoBehaviour
 
     private string[] sentences;
 
+    //consigo acessar qualquer variável de qualquer método público
+    public static DialogueControl instance;
 
+    //awake é chamado antes de todos os Start() na hierarquia de execução de scripts
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    //é chamado ao inicializar
     void Start()
     {
         

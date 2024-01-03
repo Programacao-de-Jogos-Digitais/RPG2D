@@ -7,11 +7,19 @@ public class NPC_Dialog : MonoBehaviour
     public float dialogueRange; //tamanho do circulo da colisão
     public LayerMask playerLayer; //identifica a layer (camada)
 
-    void Start()
+    bool playerHit; //monitora quando player entrar em colisão
+
+    //é chamado a cada frame
+    void Update()
     {
-        
+        //Quando apertar tecla E e plaHit for verdadeiro
+        if(Input.GetKeyUp(KeyCode.E) && playerHit )
+        {
+            DialogueControl.instance.Speech();
+        }
     }
 
+    //é usado pela física 
     void FixedUpdate()
     {
         ShowDialogue();
@@ -24,11 +32,12 @@ public class NPC_Dialog : MonoBehaviour
 
         if(hit != null)
         {
-            Debug.Log("player na área de colisão!");
+            playerHit = true;
+            //Debug.Log("player na área de colisão!");
         }
         else
         {
-
+            playerHit = false;
         }
     }
 
